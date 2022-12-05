@@ -25,10 +25,13 @@ Route::get('/mobil', [MobilController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::resource('/transaksi', TransaksiController::class)->except('edit','show','index','delete')->middleware('admin');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->middleware('admin');
+    Route::get('/transaksi/{id}', [TransaksiController::class, 'show'])->middleware('admin');
+    Route::post('/mobil', [MobilController::class, 'store'])->middleware('admin');
     Route::resource('/mobil', MobilController::class)->except('edit','store','delete')->middleware('admin');
+    
     Route::get('/mobil/{id}', [MobilController::class, 'show']);
     Route::get('/mobil', [MobilController::class, 'index']);
-    Route::post('/mobil', [MobilController::class, 'store']);
     Route::post('/transaksi', [TransaksiController::class, 'store']);
     Route::post('/logout', [AuthController::class, 'logout']);
 

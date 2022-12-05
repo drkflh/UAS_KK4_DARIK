@@ -44,7 +44,7 @@ class TransaksiController extends Controller
     {
 
         $user_id = Auth::id();
-        $user_name = Auth::user()->email;
+        $user_email = Auth::user()->email;
         $user_name = Auth::user()->name;
         $user_alamat = Auth::user()->alamat;
         $user_nik = Auth::user()->nik;
@@ -56,7 +56,7 @@ class TransaksiController extends Controller
         $harga_sewa_mobil = mobil::Where('id', $id_mobil)->value('harga_sewa_mobil');
 
         $data = Transaksi::create([
-            "email" => $user_id,
+            "email" => $user_email,
             "nama" => $user_name,
             "alamat" => $user_alamat,
             "no_hp" => $user_nohp,
